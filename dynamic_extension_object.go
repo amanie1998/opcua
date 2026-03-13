@@ -2,13 +2,13 @@ package opcua
 
 import (
 	"bytes"
-	"context"
+	"context" // Go's standard way to handle timeouts/cancellation
 	"encoding/binary"
 	"fmt"
 	"time"
 
-	"github.com/gopcua/opcua/id"
-	"github.com/gopcua/opcua/ua"
+	"github.com/gopcua/opcua/id" // Pre-defined OPC UA node IDs (constants)
+	"github.com/gopcua/opcua/ua" // OPC UA data types and structures
 )
 
 func ResolveStructureDefinition(
@@ -34,7 +34,7 @@ func ResolveStructureDefinition(
 	}
 
 	dtID := refs[0].NodeID.NodeID
-	dtNode := c.Node(dtID)
+	dtNode := c.Node(dtID) //TARGET
 
 	v, err := dtNode.Attribute(ctx, ua.AttributeIDDataTypeDefinition)
 	if err != nil {
